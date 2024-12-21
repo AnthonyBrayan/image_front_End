@@ -1,0 +1,18 @@
+{
+    "Usuario":[
+        {
+            "id_user":1,
+            "name_usuario":"Anthony Brayan FC",
+            "password":"123456",
+            "fk_id_type_user":1,
+            "fk_dni": "785k4123"
+        },
+        {
+            "id_user":20,
+            "name_usuario":"Jian Pierre FC",
+            "password":"123456",
+            "fk_id_type_user":1,
+            "fk_dni": "785k4123"
+        }
+    ]
+}
