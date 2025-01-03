@@ -9,28 +9,21 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Usuario", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then((response) => {
-      console.log('Respuesta:', response);
-      if (!response.ok) {
-        throw new Error("La solicitud no tuvo éxito");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log('Datos recibidos:', data);
-      setUsers(data); // Guardamos los datos como string
-      setIsLoading(false);
-    })
-    .catch((error) => {
-      console.error("Error al cargar datos:", error);
-      setIsLoading(false);
-    });
+    const fetchUsers = () => {
+      axios.get('http://localhost:3000/Usuario')
+      .then(response => {
+        console.log('Datos recibidos:', response.data);
+        setUsers(response.data); // Guardamos los datos correctamente
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error("Error al cargar datos:", error);
+        setIsLoading(false);
+      });
+
+    };
+  
+    fetchUsers();
   }, []);
 
   if (isLoading) {

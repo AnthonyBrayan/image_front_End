@@ -7,7 +7,7 @@ const nombreMap = {
   name_usuario: 'Nombres',
   password: 'Contraseña',
   fk_id_type_user: 'Tipo de usuario',
-  fk_dni: 'Número ITIN'
+  fk_dni: 'DNI'
 };
 
 const UserList = ({ user }) => {
