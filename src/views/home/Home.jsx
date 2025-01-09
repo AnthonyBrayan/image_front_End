@@ -9,23 +9,21 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUsers = () => {
-      axios.get('http://localhost:3000/Usuario')
-      .then(response => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/Usuario');
         console.log('Datos recibidos:', response.data);
         setUsers(response.data); // Guardamos los datos correctamente
+      } catch (error) {
+        console.error('Error al cargar datos:', error);
+      } finally {
         setIsLoading(false);
-      })
-      .catch(error => {
-        console.error("Error al cargar datos:", error);
-        setIsLoading(false);
-      });
-
+      }
     };
   
     fetchUsers();
   }, []);
-
+  
   if (isLoading) {
     return <div>Loading...</div>;
   }
